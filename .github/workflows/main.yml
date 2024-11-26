@@ -9,7 +9,7 @@ on:
       - main
 
 jobs:
-  security:
+  bandit-scan:
     runs-on: ubuntu-latest
 
     steps:
