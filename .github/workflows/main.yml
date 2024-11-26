@@ -1,4 +1,4 @@
-name: Bandit Security Analysis
+name: Bandit sast
 
 on:
   push:
