@@ -35,3 +35,8 @@ jobs:
       with:
         name: bandit-reports
         path: bandit-reports/
+
+    - name: Analyse de sécurité avec Bandit
+      run: |
+        mkdir -p bandit-reports
+        bandit -r . -x tests,migrations -f json -o bandit-reports/bandit-report.json || echo "Analyse terminée avec des résultats."
