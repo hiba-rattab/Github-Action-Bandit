@@ -32,13 +32,20 @@ jobs:
         bandit -r . -f html -o bandit-reports/bandit-report.html || echo "Bandit HTML scan completed with findings."
         bandit -r . -f json -o bandit-reports/bandit-report.json || echo "Bandit JSON scan completed with findings."
 
+    - name: Display Bandit JSON Report
+      run: |
+       echo "===== Bandit JSON Report ====="
+       cat bandit-reports/bandit-report.json
+
+    - name: Display Bandit HTML Report
+      run: |
+       echo "===== Bandit HTML Report ====="
+       cat bandit-reports/bandit-report.html
+       
     - name: Upload Bandit Reports
       uses: actions/upload-artifact@v3
       with:
         name: bandit-reports
         path: bandit-reports/
 
-    - name: Analyse de sécurité avec Bandit
-      run: |
-        mkdir -p bandit-reports
-        bandit -r . -x tests,migrations -f json -o bandit-reports/bandit-report.json || echo "Analyse terminée avec des résultats."
+    
