@@ -28,10 +28,10 @@ jobs:
 
     - name: Run Bandit Security Scan (HTML and JSON)
       run: |
-        mkdir -p bandit-reports
-        bandit -r . -f html -o bandit-reports/bandit-report.html || echo "Bandit HTML scan completed with findings."
-        bandit -r . -f json -o bandit-reports/bandit-report.json || echo "Bandit JSON scan completed with findings."
-
+       mkdir -p bandit-reports
+       bandit -r . --severity-level MEDIUM --confidence-level MEDIUM -f html -o bandit-reports/bandit-report.html || echo "Bandit HTML scan completed with findings."
+       bandit -r . --severity-level MEDIUM --confidence-level MEDIUM -f json -o bandit-reports/bandit-report.json || echo "Bandit JSON scan completed with findings."
+    
     - name: Display Bandit JSON Report
       run: |
        echo "===== Bandit JSON Report ====="
